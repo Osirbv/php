@@ -24,13 +24,13 @@ $first_number = $_POST['first_number'];
 $second_number= $_POST['second_number'];
 $operation = $_POST['switch'];
 
-interface Itempate{
+interface Itemplate{
     public function plus($name,$var);
     public function minus($name,$var);
     public function mul($name,$var);
     public function div($name,$var);
 }
-class Temples implements iTempatTemplate {
+class Temples implements Itemplate {
 public $get_number;
     public function plus($name,$var)
     {
@@ -49,9 +49,8 @@ public $get_number;
         return $this->get_number = $name+$var;
     }
 }
-  class round extends Te{
+  class round extends Temples{
     private function rounds($a){
-
     }
 
 }
@@ -60,7 +59,7 @@ class cls_round extends round {
     {
     }
 }
-abstract class answer extends Templete
+abstract class answer extends Temples
 {
     public function answers(){
         echo $this->gettable;
@@ -76,8 +75,9 @@ class get_answer extends answer
 $class = new Temples();
 $rounds = new cls_round();
 strval($operation);
-$class_rounds = 'cls_round';
- $set = 'round';
-$answer = $class->$operation($first_number,$second_number);
-$answer = $rounds->rounds(2);
-echo $answer;
+if(!empty($operation || $first_number || $second_number)) {
+    $answer = $class->$operation($first_number, $second_number);
+    echo $answer;
+}
+else
+    echo 'NEA';
